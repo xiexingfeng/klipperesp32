@@ -1,0 +1,108 @@
+<html>
+
+<head>
+    <!-- smoosh -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- endsmoosh -->
+    <title>ESP32 KLIPPER</title>
+</head>
+
+<body>
+    <div class="panel">
+        <center>
+            <h2 id="MSG"></h2>
+        </center>
+    </div>
+    <div class="panel">
+        <center>
+            <h2>
+                <span translate>System settings</span>
+            </h2>
+            <button type="button" id="config_refresh_btn" class="btn btn-primary" onclick="refreshconfig();">
+               <svg width='1.3em' height='1.2em' viewBox='0 0 1300 1200'>
+                    <g transform='translate(50,1200) scale(1, -1)'>
+                        <path  fill="currentColor" d='M947 1060l135 135q7 7 12.5 5t5.5 -13v-361q0 -11 -7.5 -18.5t-18.5 -7.5h-361q-11 0 -13 5.5t5 12.5l134 134q-110 75 -239 75q-116 0 -214.5 -57t-155.5 -155.5t-57 -214.5h-150q0 117 45.5 224t123 184.5t184.5 123t224 45.5q192 0 347 -117zM1027 600h150 q0 -117 -45.5 -224t-123 -184.5t-184.5 -123t-224 -45.5q-192 0 -348 118l-134 -134q-7 -8 -12.5 -5.5t-5.5 12.5v360q0 11 7.5 18.5t18.5 7.5h360q10 0 12.5 -5.5t-5.5 -12.5l-133 -133q110 -76 240 -76q116 0 214.5 57t155.5 155.5t57 214.5z' />
+                    </g>
+                </svg>
+            </button>
+            <br>
+            <span id="config_status"></span>
+            <hr>
+            <div class="loader hide_it" id="config_loader"></div>
+            <div class="" id="config_list_content" >
+                <table class="table table-bordered table-striped table-hover table-responsive" style='width:auto; max-width: 90% !important; word-wrap: break-word;'>
+                     <thead>
+                            <tr>
+                                <th translate>Label</th>
+                                <th translate>Value</th>
+                                <th translate>Help</th>
+                            </tr>
+                        </thead>
+                     <tbody id="config_list_data"></tbody>
+                </table>
+            </div>     
+        </center>
+    </div>
+    <div class="panel hide_it" id="FILESYSTEM">
+        <div class="panel-heading">Flash Filesystem</div>
+        <div class="panel-body">
+            <input type="file" id="file-select" name="myfiles[]" multiple />
+            <input class="btn btn-primary" type="button" id="upload-button" onclick="Sendfile();" value="Upload"/>&nbsp;&nbsp;<progress style="visibility:hidden;" name='prg' id='prg' max='100'></progress>
+            <br><br>
+            <div class="panel">
+                <div class="panel-body">
+                    <table>
+                        <tr>
+                            <td width="0%">
+                                <input class="btn btn-primary" type="button" onclick="SendCommand('list','all');" value="Refresh"/>
+                            </td>
+                            <td width="0%">
+                                <div onclick="Createdir()" class="btnimg"><svg width="40" height="40" viewBox="0 0 40 40"><rect x="5" y="10" width="30" height="20" rx="2" ry="2" fill="#31b0d5" />
+                                        <rect x="20" y="5" width="15" height="15" rx="2" ry="2" fill="#31b0d5" /><text x="15" y="25" font-size="18"  font-weight="800"  fill="white">+</text></svg>
+                                </div>
+                            </td>
+                            <td width="100%">
+                                <div id="path" class="info" >&nbsp;</div>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="table table-striped" style="border:1px;solid #dddddd;margin-bottom:20px;" >
+                        <thead>
+                            <tr>
+                                <th width='0%'>Type</th>
+                                <th>Name</th>
+                                <th>Size</th>
+                                <th id="FS_time">Time</th>
+                                <th width='0%'></th>
+                                <th width='100%'></th>
+                            </tr>
+                        </thead>
+                        <tbody id="file_list"></tbody>
+                    </table>
+                </div>
+                <div class="panel-footer " id="status"></div>
+            </div>
+        </div>
+    </div>
+    <div class="panel" id="FWUPDATE">
+        <div class="panel-heading">Firmware Update</div>
+        <div class="panel-body">
+            <table>
+                <tr>
+                    <td><input type="file" id="fw-select" name="myfiles[]" /></td>
+                    <td><input class="btn btn-primary" type="button" id="ubut" onclick="Uploadfile();" value="Update" />
+                    </td>
+                    <td><progress style="visibility:hidden;" name='prgfw' id='prgfw' max='100'></progress></td>
+                    <td><span id='msg' style='visibility:hidden;'>Restarting, please wait....</span><span
+                            id='counter'></span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- smoosh -->
+    <script src="js/script.js"></script>
+    <!-- endsmoosh -->
+</body>
+
+</html>

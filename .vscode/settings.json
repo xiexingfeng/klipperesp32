@@ -1,0 +1,43 @@
+{
+    "files.associations": {
+        "internal.h": "c",
+        "arduino.h": "c",
+        "setjmp.h": "c",
+        "optional": "cpp",
+        "istream": "cpp",
+        "ostream": "cpp",
+        "system_error": "cpp",
+        "array": "cpp",
+        "functional": "cpp",
+        "tuple": "cpp",
+        "type_traits": "cpp",
+        "utility": "cpp",
+        "compiler.h": "c",
+        "uart.h": "c",
+        "autoconf.h": "c",
+        "map": "cpp",
+        "wifi.h": "c",
+        "serial_irq.h": "c",
+        "string": "cpp",
+        "string_view": "cpp",
+        "*.tcc": "cpp",
+        "regex": "cpp",
+        "atomic": "cpp",
+        "cstdint": "cpp",
+        "esp_clk.h": "c",
+        "tcp.h": "c",
+        "fastio.h": "c",
+        "esp_task_wdt.h": "c",
+        "timer.h": "c",
+        "esp32-hal-ledc.h": "c",
+        "timer_irq.h": "c"
+    },
+    "cmake.configureOnOpen": false,
+    "idf.adapterTargetName": "esp32s3",
+    "idf.openOcdConfigs": [
+        "interface/ftdi/esp32_devkitj_v1.cfg",
+        "target/esp32s3.cfg"
+    ],
+    "idf.flashType": "UART",
+    "idf.port": "/dev/cu.usbserial-10"
+}
